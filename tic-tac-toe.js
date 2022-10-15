@@ -47,13 +47,10 @@ onload = function()
 		let col = index % 3;
 		elem.addEventListener("click", function()
 		{
-			console.log("check 1");
 			if(turn%2==0 )
 			{
-				console.log("check 2");
 				if(play==true)
 				{
-					console.log("check 3");
 					elem.innerHTML="X";
 					elem.classList.add("square", "X");
 					turn++;

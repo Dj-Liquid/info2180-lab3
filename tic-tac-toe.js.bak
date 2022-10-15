@@ -39,53 +39,7 @@ onload = function()
 			play=false;
 		}
 	}
-	/*
-	function click(elem,row,col)
-	{
-		if(turn%2===0 && elem.innerHTML==="")
-		{
-			if(play==true)
-			{
-				console.log("check 1");
-				elem.innerHTML="X";
-				elem.classList.add("square", "X");
-				turn++;
-				grid[row][col]="X";
-				check("X");
-			}
-		}
-		else if(turn%2===1 && elem.innerHTML==="")
-		{
-			if(play==true)
-			{
-				elem.innerHTML="O";
-				elem.classList.add("square", "O");
-				turn++;
-				grid[row][col]="O";
-				check("O");
-			}
-		}
-    }
-	
-	gameboard.forEach(function(elem, index) 
-	{
-        elem.setAttribute("class", "square");
-		let row = Math.floor(index/3);
-		let col = index % 3;
-        elem.addEventListener("click", click(elem,row,col,turn)); 
-        
-		
-        elem.addEventListener("mouseover", function()
-		{
-            this.classList.add("hover");
-        });
 
-        elem.addEventListener("mouseout", function()
-		{
-            this.classList.remove("hover");
-        });
-    });
-	*/
 	gameboard.forEach(function(elem, index) 
 	{
 		elem.setAttribute("class", "square");
@@ -120,7 +74,6 @@ onload = function()
 			}
 		}); 
         
-		
         elem.addEventListener("mouseover", function()
 		{
             this.classList.add("hover");
