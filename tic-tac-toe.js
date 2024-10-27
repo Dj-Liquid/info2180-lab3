@@ -46,18 +46,39 @@ function Play(elem, index)
 
 function Check()
 {
+	let statusdiv = document.querySelector('#status');
 	var letter = 'X';
 		if (turn % 2 == 1)
 		{
 			letter = 'O';
 		}
-	if (turn>=5)
+	if (CheckWinner(gameState, letter)) 
 	{
-		let statusdiv = document.querySelector('#status');
 		play = false;
-		statusdiv.classList.add('.you-won')
+		statusdiv.classList.add('you-won')
 		statusdiv.innerHTML = 'Congratulations! '+letter+' is the winner!';
 	}
+	if (turn == 8)
+	{
+		statusdiv.innerHTML = 'The Game is a Draw';
+	}
+}
+
+function CheckWinner(gameState, letter) {
+    const winningCombinations = [
+        [[0, 0], [0, 1], [0, 2]], 
+        [[1, 0], [1, 1], [1, 2]], 
+        [[2, 0], [2, 1], [2, 2]], 
+        [[0, 0], [1, 0], [2, 0]], 
+        [[0, 1], [1, 1], [2, 1]], 
+        [[0, 2], [1, 2], [2, 2]], 
+        [[0, 0], [1, 1], [2, 2]],
+        [[0, 2], [1, 1], [2, 0]],
+    ];
+
+    return winningCombinations.some(combination => 
+        combination.every(([row, col]) => gameState[row][col] === letter)
+    );
 }
 
 function Reset()
@@ -66,7 +87,7 @@ function Reset()
 	gameState = [[null, null, null], [null, null, null], [null, null, null]];
 	play = true;
 	let statusdiv = document.querySelector('#status');
-	statusdiv.classList.remove('.you-won')
+	statusdiv.classList.remove('you-won')
 	statusdiv.innerHTML = 'Move your mouse over a square and click to play an X or an O.';
 	
 	let squares = document.querySelectorAll('#board div');
